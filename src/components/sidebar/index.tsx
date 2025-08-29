@@ -11,12 +11,16 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import { MdOutlineDashboard } from 'react-icons/md';
-import { MdOutlineShopTwo } from 'react-icons/md';
+import { MdDashboard } from 'react-icons/md';
 import { GiMedicines } from 'react-icons/gi';
-import { AiOutlineMedicineBox } from 'react-icons/ai';
-import { IoSettingsOutline } from 'react-icons/io5';
+import { AiFillMedicineBox } from 'react-icons/ai';
+import { IoPieChartSharp, IoSettings } from 'react-icons/io5';
+import { FaCartArrowDown } from 'react-icons/fa';
 import { RiAppsFill } from 'react-icons/ri';
+import { BiSolidBarChartSquare } from 'react-icons/bi';
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import { ImStatsBars, ImStatsBars2 } from 'react-icons/im';
+
 import { useRouter } from 'next/navigation';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -24,13 +28,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" variant="floating" {...props}>
-      <SidebarHeader>
+      <SidebarHeader className="bg-sidebar-accent-foreground rounded-t-lg">
         <SidebarMenuButton
           size="lg"
           className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
         >
           <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-            <RiAppsFill className="size-4" />
+            <RiAppsFill className="size-4" color="#fff" />
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">Careipro</span>
@@ -38,7 +42,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </div>
         </SidebarMenuButton>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-sidebar-accent-foreground">
         <SidebarGroup>
           <SidebarGroupLabel>General</SidebarGroupLabel>
           <SidebarMenu>
@@ -50,7 +54,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="cursor-pointer"
               >
                 <div onClick={() => router.push('/dashboard')}>
-                  <MdOutlineDashboard />
+                  <MdDashboard color="text-sky-400" />
                   <span className="font-semibold">Dashboard</span>
                 </div>
               </SidebarMenuButton>
@@ -64,12 +68,103 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="cursor-pointer"
               >
                 <div onClick={() => router.push('/dashboard/inventory')}>
-                  <MdOutlineShopTwo />
-                  <span className="font-semibold">Inventory</span>
+                  <AiFillMedicineBox />
+                  <span className="font-semibold">Stocks</span>
                 </div>
               </SidebarMenuButton>
             </SidebarMenuItem>
 
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div onClick={() => router.push('/dashboard/inventory')}>
+                  <FaCartArrowDown />
+                  <span className="font-semibold">Purchases</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div onClick={() => router.push('/dashboard/inventory')}>
+                  <BiSolidBarChartSquare />
+                  <span className="font-semibold">Sells</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Invoices</SidebarGroupLabel>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div>
+                  <BsFillCartCheckFill />
+                  <span className="font-semibold">Purchases Invoices</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div>
+                  <IoPieChartSharp />
+                  <span className="font-semibold">Sells Invoices</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div>
+                  <ImStatsBars />
+                  <span className="font-semibold">Purchase returns</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                asChild
+                isActive={false}
+                tooltip="Inventory"
+                className="cursor-pointer"
+              >
+                <div>
+                  <ImStatsBars2 />
+                  <span className="font-semibold">Sell returns</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Others</SidebarGroupLabel>
+          <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
@@ -83,24 +178,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </div>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Sell | Purchase Order</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                asChild
-                isActive={false}
-                tooltip="Inventory"
-                className="cursor-pointer"
-              >
-                <div>
-                  <AiOutlineMedicineBox />
-                  <span className="font-semibold">Purchase Medicine</span>
-                </div>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
 
             <SidebarMenuItem>
               <SidebarMenuButton
@@ -110,7 +187,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="cursor-pointer"
               >
                 <div onClick={() => router.push('/dashboard/settings')}>
-                  <IoSettingsOutline />
+                  <IoSettings />
                   <span className="font-semibold">Settings</span>
                 </div>
               </SidebarMenuButton>
@@ -118,7 +195,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="bg-sidebar-accent-foreground rounded-b-lg">
         <SidebarMenuButton size="lg">
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold text-center">

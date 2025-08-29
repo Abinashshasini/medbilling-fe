@@ -111,15 +111,15 @@ export default function Login() {
             />
 
             <div className="text-right" onClick={onRegisterClick}>
-              <a href="#" className="text-sm text-sky-600 hover:underline">
+              <a href="#" className="text-sm text-indigo-600 hover:underline">
                 Don&apos;t have an account? Signup
               </a>
             </div>
-          </form> 
+          </form>
         </Form>
         <CardContent className="space-y-4 px-6 pb-6">
           <Button
-            className="w-full bg-black hover:bg-neutral-800 text-white rounded-xl py-5"
+            className="w-full bg-sky-600 hover:bg-sky-500 text-white rounded-xl py-5"
             onClick={() => form.handleSubmit(onSubmit)()}
           >
             Get Started

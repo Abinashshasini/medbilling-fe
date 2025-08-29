@@ -232,19 +232,18 @@ export default function Register() {
               )}
             />
 
-            {/* Logo */}
             <FormField
               control={form.control}
-              name="logo"
+              name="upi_id"
               render={({ field }) => (
                 <FormItem>
-                  <Label>Logo</Label>
+                  <Label>UPI ID</Label>
                   <FormControl>
                     <div className="flex items-center gap-2 border rounded-lg px-3 py-2">
                       <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => field.onChange(e.target.files?.[0])}
+                        {...field}
+                        type="text"
+                        placeholder="example@upi"
                         className="border-0 focus-visible:ring-0 focus:outline-none shadow-none"
                       />
                     </div>
@@ -269,33 +268,20 @@ export default function Register() {
               )}
             />
 
-            {/* UPI ID (full row) */}
-            <FormField
-              control={form.control}
-              name="upi_id"
-              render={({ field }) => (
-                <FormItem className="md:col-span-2">
-                  <Label>UPI ID</Label>
-                  <FormControl>
-                    <div className="flex items-center gap-2 border rounded-lg px-3 py-2">
-                      <Input
-                        {...field}
-                        type="text"
-                        placeholder="example@upi"
-                        className="border-0 focus-visible:ring-0 focus:outline-none shadow-none"
-                      />
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div
+              className="text-right md:col-span-2"
+              onClick={() => router.push('/')}
+            >
+              <a href="#" className="text-sm text-indigo-600 hover:underline">
+                Don&apos;t have an account? Signup
+              </a>
+            </div>
 
             {/* Submit */}
             <div className="md:col-span-2 mb-4">
               <Button
                 type="submit"
-                className="w-full bg-black hover:bg-neutral-800 text-white rounded-xl py-5"
+                className="w-full  bg-sky-600 hover:bg-sky-500 text-white rounded-xl py-5"
               >
                 Register
               </Button>
