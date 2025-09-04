@@ -103,7 +103,7 @@ input:-webkit-autofill:active {
 
   --primary: #ec1f71;
 
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: #fff2f6;
 
   --secondary: oklch(0.97 0 0);
 
@@ -111,7 +111,7 @@ input:-webkit-autofill:active {
 
   --muted: oklch(0.97 0 0);
 
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #111;
 
   --accent: oklch(0.97 0 0);
 
@@ -119,7 +119,7 @@ input:-webkit-autofill:active {
 
   --destructive: oklch(0.577 0.245 27.325);
 
-  --border: oklch(0.922 0 0);
+  --border: #cdcdcd;
 
   --input: oklch(0.922 0 0);
 
@@ -215,4 +215,12 @@ input:-webkit-autofill:active {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.gradiantBg {
+  background: linear-gradient(90deg, rgb(236, 32, 113) 0%, #fd7f81 100%);
+}
+
+.gradiantColor {
+  color: linear-gradient(90deg, rgb(236, 32, 113) 0%, #fd7f81 100%);
 }
